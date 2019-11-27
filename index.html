@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="App">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CoopGlass</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/boostrap_custom.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body style="background-image: url(images/examples/congruent_outline.png)">
+
+
+    <div ng-controller="ListController">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a href="#" class="pull-left"><img  ng-src="images/coopglass.png"  style="height: 40px;width: 40px;margin-top: 5px;margin-right: 5px" alt=""></a>
+                    <a class="navbar-brand" href="#">CoopGlass</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="contacto.html">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container">
+
+
+            <div class="col-md-9">
+
+                <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="row carousel-holder">
+
+                        <div class="col-md-12">
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img class="slide-image" src="images/1_dest.JPG" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img class="slide-image" src="images/2_dest.JPG" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img class="slide-image" src="images/3_dest.JPG" alt="">
+                                    </div>
+
+                                    <div class="item">
+                                        <img class="slide-image" src="images/carouse-telefono436.jpg" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img class="slide-image" src="images/carousel-florertelefono168.jpg" alt="">
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="products">
+
+                        <div   class="col-sm-3 col-lg-3 col-md-3" ng-repeat="product in products ">
+                             <div ng-click="openModal(product)" class="thumbnail">
+                                <img ng-src="images/{{product.img}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="thumbnail">
+                    <img src="images/11_min_large.JPG" alt="">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/DSC_0305.JPG" alt="">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/lateral3.jpg" alt="">
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- /.container -->
+
+        <div class="container">
+
+            <hr>
+
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Created By : Matilde <a href="mailto:gabriel.adrian.felipe@gmail.com">@</a> <a href="http://www.matilde.com.ar">Matilde</a> </p>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+
+
+        <script type="text/ng-template" id="modal_product">
+            <div class="modal-header">
+                <h3 class="modal-title">Detalle : Item {{ id }}   {{ name }} </h3>
+                <h4 ng-if="descript" class="modal-title">Descripcion : {{ descript }}  </h4>
+            </div>
+
+            <div class="modal-body"  align="center">
+                <div class="jumbotron">
+                    <img ng-src="images/{{ img }}" style="width: 300px ;height:300px;" class="img-thumbnail"  alt="">
+                </div>
+            </div>
+
+            <div class="modal-footer" style="text-align: right;">
+
+                <textarea class="form-control"  ng-model="mensaje" placeholder="Consulta por este producto aqui :" rows="3"></textarea>
+                <p></p>
+                <div class="row">
+                    <div class="col-xs-4">
+
+                        <input type="text" ng-model="namePerson"  class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="col-xs-4">
+
+                        <input type="text" ng-model="mail" class="form-control" placeholder="Mail">
+                    </div>
+                    <div class="col-xs-4">
+
+                        <input type="text" ng-model="telefono" class="form-control" placeholder="Telefono">
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="enviado" class="success"> Mail enviado con exito !</div>
+                <button  ng-if="!enviado" class="btn btn-success" ng-click="sendMail()">Enviar</button>
+
+               <!-- <p> Telefonos:(011)1554109980 / (02324)43052 - Mail: <a href="coop.glass@hotmail.com">coop.glass@hotmail.com</a>  </p>
+-->
+                <button class="btn btn-primary" ng-click="close()">Cerrar</button>
+            </div>
+        </script>
+
+        <!-- /.container -->
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+
+        <script src="js/bootstrap.min.js"></script>
+
+    </div>
+</body>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-animate.js"></script>
+<script src="js/ui-bootstrap-tpls-1.2.2.min.js"></script>
+<script src="js/app.js"></script>
+
+</html>
